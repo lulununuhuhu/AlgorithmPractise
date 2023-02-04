@@ -19,11 +19,6 @@ public class 最大公约数 {
      * @return
      */
     private int gcd(int x,int y){
-        int i = Math.min(x,y);
-        for (; i >= 1; i--) {
-            if(x % i == 0 && y % i == 0)
-                return x;
-        }
-        return i;
+        return y == 0 ? x:gcd(y,x%y);
     }
 }
