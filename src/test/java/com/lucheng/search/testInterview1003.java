@@ -1,6 +1,5 @@
 package com.lucheng.search;
 
-import com.lucheng.search.Interview1003;
 import org.junit.Test;
 
 public class testInterview1003 {

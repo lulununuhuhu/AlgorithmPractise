@@ -1,6 +1,5 @@
 package com.lucheng.search;
 
-import com.lucheng.search.FindPeakElementLeetcode162;
 import org.junit.Test;
 
 

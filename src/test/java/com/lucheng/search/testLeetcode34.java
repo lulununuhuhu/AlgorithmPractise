@@ -1,6 +1,5 @@
 package com.lucheng.search;
 
-import com.lucheng.search.Leetcode34;
 import org.junit.Test;
 
 public class testLeetcode34 {

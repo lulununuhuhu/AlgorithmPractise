@@ -1,7 +1,5 @@
 package com.lucheng.search;
 
-import com.lucheng.search.Offer008;
-
 public class testOffer008 {
     public static void main(String[] args) {
         int[] nums = new int[]{2,3,1,2,4,3};

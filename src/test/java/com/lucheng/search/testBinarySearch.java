@@ -1,6 +1,5 @@
 package com.lucheng.search;
 
-import com.lucheng.search.BinarySearch;
 import org.junit.Test;
 
 public class testBinarySearch {

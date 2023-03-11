@@ -1,6 +1,5 @@
 package com.lucheng.search;
 
-import com.lucheng.search.LIS;
 import org.junit.Test;
 
 public class testLIS {
