@@ -13,16 +13,7 @@ public class Offer34 {
     Deque<Integer> path = new LinkedList<>();
     public static void main(String[] args) {
         //初始化树
-        TreeNode root = new TreeNode(3);
-        TreeNode node1 = new TreeNode(9);
-        TreeNode node2 = new TreeNode(20);
-        TreeNode node3 = new TreeNode(15);
-        TreeNode node4 = new TreeNode(7);
-        TreeNode node5 = new TreeNode(18);
-        TreeNode node6 = new TreeNode(0);
-        root.left = node1;root.right = node2;
-        node2.left = node3;node2.right = node4;
-        node1.left = node5;node5.left = node6;
+        TreeNode root = TreeNode.inialTree();
         Offer34 offer34 = new Offer34();
         List<List<Integer>> res = offer34.pathSum(root, 30);
         System.out.println("结果是:"+res);
