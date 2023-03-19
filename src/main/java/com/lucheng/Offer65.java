@@ -1,5 +1,7 @@
 package com.lucheng;
 
+import java.util.LinkedList;
+
 /**
  * https://leetcode.cn/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/description/?envType=study-plan&id=lcof&plan=lcof&plan_progress=jk8pssc
  */
