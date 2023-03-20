@@ -1,9 +1,9 @@
 package com.lucheng.offer;
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
     TreeNode() {
     }
 
@@ -16,10 +16,10 @@ public class TreeNode {
         TreeNode node4 = new TreeNode(7);
         TreeNode node5 = new TreeNode(18);
         TreeNode node6 = new TreeNode(0);
-        root.left = node1;root.right = node2;
-        node2.left = node3;node2.right = node4;
-        node1.left = node5;node5.left = node6;
-        return root;
+        node3.left = node4;node3.right = node2;
+        node4.left = root;node4.right = node1;
+        root.left = node6;node2.left = node5;
+        return node3;
     }
     TreeNode(int x) { val = x; }
     TreeNode(int val, TreeNode left, TreeNode right) {
