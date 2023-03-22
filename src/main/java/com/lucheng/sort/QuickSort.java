@@ -29,7 +29,8 @@ public class QuickSort {
                 nums[j] = tmp;
             }
         }
-        //将中枢元素与nums[j]交换,因为j始终指向小于等于中枢元素的位置
+        //将中枢元素与nums[j]交换因为j始终指向小于等于中枢元素的位置
+        //小于中枢元素时,表明j索引值还大于pivot索引值;等于pivot索引值时，说明j就是指向pivot
         int tmp = nums[l];
         nums[l] = nums[j];
         nums[j] = tmp;
