@@ -1,5 +1,9 @@
 package com.lucheng.大厂真题.DP.LinearDP;
 
+/**
+ * https://codefun2000.com/p/P1035
+ */
+
 import java.util.Scanner;
 
 public class P1035 {
@@ -15,14 +19,11 @@ public class P1035 {
         //初始化dp数组
         dp[0] = M[0];dp[1] = M[1];
         res = Math.max(dp[0],dp[1]);
-        //每一个dp[i]取所有与i不相邻格子的最大值+自己格子的值
+        //状态转移方程：dp[i] = dp[i-2]+M[i]，dp[i-1]的最大值
         for (int i = 2; i < N; i++) {
-            for (int j = 0; j < i - 1; j++) {
-                dp[i] = Math.max(dp[j]+M[i],dp[i]);//状态转移方程
-            }
+            dp[i] = Math.max(dp[i-2]+M[i],dp[i-1]);
             res = Math.max(res,dp[i]);//取dp[i]的最大值
         }
-
         System.out.println(res);
     }
 }
