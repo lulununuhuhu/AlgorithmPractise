@@ -6,49 +6,46 @@ import java.util.Scanner;
  * https://codefun2000.com/p/P1023
  */
 public class P1023 {
-    private static final int capacity = 100001;
-    private static int[] cnt = new int[capacity];//哈希数组，记录每个索引值出现的次数
+    private static int N;
+    private static int[] nums;
+    private static int[] cnts = new int[100001];//哈希数组，记录每个数的出现次数
+    private static int max;//记录nums数组中的最大值
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int[] arr = new int[n];
-        int maxValue = 0;
-        for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt();
-            maxValue = Math.max(maxValue,arr[i]);
-            cnt[arr[i]]++;
+        N = scanner.nextInt();
+        nums = new int[N];
+        for (int i = 0; i < N; i++) {
+            nums[i] = scanner.nextInt();
+            max = Math.max(max,nums[i]);
+            cnts[nums[i]]++;
         }
-        int res = simulation(n,maxValue);
+        int res = simulationAndHash(nums,cnts,max,N);
         System.out.println(res);
     }
 
     /**
-     * 方法一：模拟+贪心法（如果说题意是删除一个等于arri+1或者arri-1的数，那么这个方法可行。然而题意是删除所有，所以不能用贪心思想）
+     * 使用模拟＋哈希表的方法。
      * 基本思路：
-     * 1. 找到数组中最大的数maxValue，作为当前删除数curDel
-     * 2. 将cnt[curDel]减1 如果cnt[curDel-1]大于0，同样减一，n-2；如果等于0，n-1。将被删除的数加入结果中
-     * 3. 在cnt数组中从后往前遍历，找到下一个cnt[x]不为0的数，将x作为curDel同样进行上述1、2步
-     * 4. 当n为0时，返回结果
-     *
-     * @param n        数组长度(需要删除的个数)
-     * @param startDel  待删除的第一个值
+     * 1. 每一轮获取当前最大数curMax，然后将该数对应的value减1，删除次数delCounts加1；将curMax-1对应的value变为0（因为是删除所有），删除次数delCounts加curMax-1对应的value(如果有的话，没有就不需要)
+     * 2. 判断最大数curMax的对应的value是否是0.如果是0，则向下遍历找到最进的一个不为0的value，更新curMax，然后继续第1步；如果不是，继续第1步
+     * 3. 重复1，2两步，直到delCounts等于n
      * @return
      */
-    private static int simulation(int n, int startDel) {
-        int delCounts = n;
-        int curDel = startDel;
-        int res = 0;//存储答案
-        while (delCounts > 0){
-            cnt[curDel]--;
-            res += curDel;
-            delCounts--;
-            if(cnt[curDel-1]>0){
-                cnt[curDel-1]--;
-                delCounts--;
+    private static int simulationAndHash(int[] nums, int[] cnts, int max, int n) {
+        int delCounts = 0;//记录删除的个数
+        int curMax = max;//记录每一轮的最大数
+        int res = 0;
+        while (delCounts < n){
+            cnts[curMax]--;delCounts++;res += curMax;
+            if(curMax-1>=0 && cnts[curMax-1] != 0){
+                delCounts += cnts[curMax-1];
+                cnts[curMax-1] = 0;
+
             }
-            //找到下一个curDel
-            while (curDel >= 0 && cnt[curDel] == 0)
-                curDel--;
+            //第2步
+            while (curMax>=0 && cnts[curMax] == 0){
+                curMax--;
+            }
         }
         return res;
     }
